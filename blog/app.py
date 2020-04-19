@@ -22,38 +22,30 @@ def parse_args():
     return args
 
 
-def run():
-    args = parse_args()
-    # TODO:
-    # 1. make cli that can update-db
-    #   - update db request code written
-    # 2. make blog post
-    # 3. use flask blue prints
-    # 4. make views.py
-
-    # TODO use blueprints so they can 
+def get_app(devel=True):
     # make app object
     app = Flask(__name__)
-    conf = config.get_conf(args.devel)
+    conf = config.get_conf(devel)
     app.config.from_object(conf)
 
     # database stuff
-    #  app.config["DATABASE"] = DATABASE
     db.init_app(app)
     db.database.create_tables([Entry, FTSEntry], safe=True)
 
     # views stuff
     app.register_blueprint(bp)
+    return app
 
-    # start app
-    if args.devel:
+
+def run(devel=True):
+    app = get_app(devel)
+    if devel:
         app.run(host="0.0.0.0", port=app.config['PORT'])
     else:
         from waitress import serve
-        #  from flask_sslify import SSLify
-        #  sslify = SSLify(app)
         serve(app, host="0.0.0.0", port=app.config['PORT'])
 
 
 if __name__ == '__main__':
-    run()
+    args = parse_args()
+    run(args.devel)

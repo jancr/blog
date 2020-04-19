@@ -1,0 +1,15 @@
+# acual requrements
+flask
+requests
+peewee
+micawber
+markdown
+waitress
+BeautifulSoup4
+
+# nginx
+uwsgi
+wheel
+
+# convenience
+neovim

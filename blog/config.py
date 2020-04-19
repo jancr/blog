@@ -13,6 +13,7 @@ class BaseConfig:
     SITE_WIDTH = 800
     STATIC_DIR = app_dir / 'static'
     SECRET_DB_URL = secret.SECRET_DB_URL
+    PORT = 5001
 
     @property
     def POSTS_MARKDOWN_DIR(cls):
@@ -28,16 +29,18 @@ class ProductionConfig(BaseConfig):
     DEBUG = False
     DEVELOPMENT = False
     DATABASE = f'sqliteext:///{BaseConfig.APP_DIR / "blog.db"}'
-    PORT = 443
-    WEB_PROTOCOL = 'https'
+    #  PORT = 443
+    #  PORT = 80
+    #  WEB_PROTOCOL = 'https'
+    WEB_PROTOCOL = 'http'
 
 
 class DevelopmentConfig(BaseConfig):
     POSTS_DIR = BaseConfig.STATIC_DIR / 'test_posts'
     DEBUG = True
     DEVELOPMENT = True
-    DATABASE = f'sqliteext:///{BaseConfig.STATIC_DIR / "devel.db"}'
-    PORT = 5000
+    DATABASE = f'sqliteext:///{BaseConfig.APP_DIR / "devel.db"}'
+    #  PORT = 5000
     WEB_PROTOCOL = 'http'
 
 

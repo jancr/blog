@@ -1,0 +1,10 @@
+server {
+    listen 80;
+    server_name badprior.com www.badprior.com;
+
+    location / {
+        include uwsgi_params;
+        uwsgi_pass unix:/root/Projects/blog/blog/blog.sock;
+    }
+}
+
