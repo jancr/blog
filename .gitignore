@@ -1,0 +1,4 @@
+*.db
+*.pdf
+blog/secret.py
+__pycache__
