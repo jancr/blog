@@ -3,12 +3,11 @@ Description=uWSGI instance to serve bloh
 After=network.target
 
 [Service]
-# TODO: obviously not run as root
-User=root
-Group=root
-WorkingDirectory=/root/Projects/blog/blog
-Environment="PATH=/root/.virtualenvs/blog/bin/python"
-ExecStart=/root/.virtualenvs/blog/bin/uwsgi --ini blog.ini
+User=jcr
+Group=www-data
+WorkingDirectory=/home/jcr/Projects/blog/blog
+Environment="PATH=/home/jcr/.pyenv/versions/blog/bin"
+ExecStart=/home/jcr/.pyenv/versions/blog/bin/uwsgi --ini blog.ini
 
 [Install]
 WantedBy=multi-user.target
