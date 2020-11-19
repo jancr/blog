@@ -10,9 +10,9 @@ import config
 
 def post(docid, conf):
     if not (isinstance(docid, int) or 1 <= docid):
-        raise ValueError("docid must be an  positive integer!")
+        raise ValueError("docid must be an positive integer!")
 
-    r = requests.get(f'http://0.0.0.0:{conf.PORT}/db/{conf.SECRET_DB_URL}/{docid}')
+    r = requests.get(f'{conf.BASE_URL}/db/{conf.SECRET_DB_URL}/{docid}')
     print(r.content.decode('utf'))
 
 

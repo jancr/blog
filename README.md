@@ -37,10 +37,14 @@ TODO: better security!
   * TODO does this work?: `git clone https://github.com/jancr/blog-posts blog-posts`
 
 
-## Other TODO:
+## General TODO:
 no particular order
 
 * `requirements.txt`
-* create first blog post!
 * `about.html`
+
+## Website TODO:
 * chronological listing of posts
+* make it possible to post via local host so the "secret" for posting is not leaked.
+* Extend database with 'series' and add 'next in series' to `details.html`
+* Add "next post" to the bottom of the `detail.html`

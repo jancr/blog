@@ -5,9 +5,45 @@
 {% block content_title %}{{ entry.title }}{% endblock %}
 
 {% block extra_header %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock %}
 
 {% block content %}
   <p>Created {{ entry.timestamp.strftime('%m/%d/%Y at %I:%M%p') }}</p>
   {{ entry.html_content }}
+    {% if entry.series %}
+        <hr>
+        This is part {{ entry.part }} 
+        <a href="../{{ series.last.slug }}">of {{ series.last.part }}</a>
+        in the "{{ entry.series }}" Series.
+            <br/>
+        {% if series.previous %}
+            Clik here to go to the
+            <a href="../{{ series.previous.slug }}">previous post</a>
+            <br/>
+        {% endif %}
+        {% if series.next %}
+            Click here for the 
+            <a href="../{{ series.next.slug }}">next post</a>
+            <br/>
+        {% endif %}
+    {% endif %}
+    <hr>
+    <div style="text-align: center"> 
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+        </a>
+        <br />This work is licensed under a
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            Creative Commons Attribution-ShareAlike 4.0 International License
+        </a>.
+    </div>
+    <hr>
+    <div style="text-align: center"> 
+    <a href=https://www.github.com/jancr/blog-posts//blob/master/posts/{{ entry.github_file }}>
+    <i class="fa fa-github" style="font-size:24px"></i>
+      Edit on GitHub! (if you find errors in this post)
+  </a>
+
+    </div>
 {% endblock %}
